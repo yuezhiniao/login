@@ -40,7 +40,10 @@ class ArticleController extends Controller
         $article->UserId = $request->get('userid'); // 将 POST 提交过了的 title 字段的值赋给 article 的 title 属性
         $article->UserName = $request->get('username'); // 同上
 		$article->Password = $request->get('password'); // 同上
-		$article->WorkNo = $request->get('username'); // 同上
+		$article->phone = $request->get('phone');
+		$article->one = $request->get('one'); // 同上
+		$article->two = $request->get('two'); // 同上
+		$article->memo = $request->get('memo'); // 同上
 		
         //$article->user_id = $request->user()->id; // 获取当前 Auth 系统中注册的用户，并将其 id 赋给 article 的 user_id 属性
         
@@ -62,7 +65,10 @@ class ArticleController extends Controller
         $article = Tabappuser::find($UserId);
         $article->UserName = $request->get('username');
         $article->Password = $request->get('password');
-		$article->WorkNo = $request->get('workno');
+		$article->phone = $request->get('phone');
+		$article->one = $request->get('one');
+		$article->two = $request->get('two');
+		$article->memo = $request->get('memo');
         if ($article->save()) {
             return redirect('admin/article');
         } else {

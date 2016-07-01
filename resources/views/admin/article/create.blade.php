@@ -18,17 +18,24 @@
                     <form action="{{ url('admin/article') }}" method="POST">
                         {!! csrf_field() !!}
                         <label > 客户帐号 
-						<input type="text" name="userid" class="form-control" required="required" placeholder="">
+						<input type="text" name="userid" class="form-control"  required="required" placeholder="必须为数字">
 						</label> 
                         <br>
 						<label > 客户名称 
-						<input type="text" name="username" class="form-control" required="required" placeholder="">
+						<input type="text" name="username" class="form-control"  required="required" placeholder="">
 						</label> 
 						<br>
 						<label > 密码 
-						<input type="text" name="password" class="form-control" required="required" placeholder="">
+						<input type="password" name="password" class="form-control" required="required" placeholder="">
 						</label> 
-                        <textarea name="body" rows="10" class="form-control"  placeholder="备注"></textarea>
+						<br>
+						<label > 手机号 
+						<input type="text" name="phone" class="form-control" required="required" placeholder="">
+						</label> 
+						<label > 消息发送方式: 
+						<input type="checkbox" name="one" > <label >手机短信</label> <input type="checkbox" name="two" > <label >app</label>
+						</label> 
+                        <textarea name="memo" rows="5" class="form-control"  placeholder="备注"></textarea>
                         <br>
                         <button class="btn btn-lg btn-info">新增帐号</button>
                     </form>

@@ -25,7 +25,7 @@
                                 </p>
                             </div>
                         </div>
-                        <a href="{{ url('admin/article/'.$article->UserId.'/edit') }}" class="btn btn-success">编辑</a>
+                        <a href="{{ url('admin/article/'.$article->UserId.'/edit') }}" class="btn btn-success" >编辑</a>
                         <form action="{{ url('admin/article/'.$article->UserId) }}" method="POST" style="display: inline;">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}

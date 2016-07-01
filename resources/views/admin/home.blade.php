@@ -10,6 +10,9 @@
                 <div class="panel-body">
                     
                     <a href="{{ url('admin/article') }}" class="btn btn-lg btn-success col-xs-12">管理帐号</a>
+					<hr/>
+					
+					<a href="{{ url('order/home') }}" class="btn btn-lg btn-success col-xs-12">订单情况</a>
 
                 </div>
             </div>
