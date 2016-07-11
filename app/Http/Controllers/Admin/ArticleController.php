@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Tabappclient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 
 use App\Article;
 use App\Tabappuser;
@@ -17,8 +18,15 @@ class ArticleController extends Controller
     }
     
     public function create()
-    {
-        return view('admin/article/create');
+    {  
+		
+	
+         // return view('admin/article/create')->withClient(Tabappclient::all());
+          return view('admin/article/create')->withClient(Tabappclient::all());
+		 
+		 
+		 
+       
     }
     
     public function edit($UserId)
@@ -37,12 +45,17 @@ class ArticleController extends Controller
 
         // 通过 Article Model 插入一条数据进 articles 表
         $article = new Tabappuser; // 初始化 Article 对象
+		$article->clientname = $request->get('selCity2');
+		$article->conname = $request->get('selCity');
+		$article->repname = $request->get('selProvince');
+		
         $article->UserId = $request->get('userid'); // 将 POST 提交过了的 title 字段的值赋给 article 的 title 属性
         $article->UserName = $request->get('username'); // 同上
 		$article->Password = $request->get('password'); // 同上
 		$article->phone = $request->get('phone');
 		$article->one = $request->get('one'); // 同上
 		$article->two = $request->get('two'); // 同上
+		$article->three = $request->get('three'); // 同上
 		$article->memo = $request->get('memo'); // 同上
 		
         //$article->user_id = $request->user()->id; // 获取当前 Auth 系统中注册的用户，并将其 id 赋给 article 的 user_id 属性
@@ -63,11 +76,16 @@ class ArticleController extends Controller
             // 'body' => 'required', 
         // ]);
         $article = Tabappuser::find($UserId);
+		$article->clientname = $request->get('selCity2');
+		$article->conname = $request->get('selCity');
+		$article->repname = $request->get('selProvince');
+		
         $article->UserName = $request->get('username');
         $article->Password = $request->get('password');
 		$article->phone = $request->get('phone');
 		$article->one = $request->get('one');
 		$article->two = $request->get('two');
+		$article->three = $request->get('three');
 		$article->memo = $request->get('memo');
         if ($article->save()) {
             return redirect('admin/article');

@@ -15,9 +15,41 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('admin/article/'.$article->UserId) }}" method="POST">
+                    <form action="{{ url('admin/article/'.$article->UserId) }}" method="POST" name= "myform">
                         {{ method_field('PATCH') }}
                         {{ csrf_field() }}
+						
+						<TABLE width="472" border="0"  cellpadding="0" cellspacing="0"  >  
+								  
+								  <TR  >  
+									<TD align="center">医药仓库 </TD>  
+									<TD><SELECT name="selProvince" id="selProvince" onChange="changeCity( )"  class="form-control" >  
+									  <OPTION >--{{ $article->repname }}--</OPTION>  
+									  <OPTION>重庆捷江</OPTION>  
+									  <OPTION>航空开发公司</OPTION>  
+									  
+									</SELECT></TD>  
+								  </TR>  
+								  <TR>  
+									<TD><DIV align="center">委托方</DIV></TD>  
+									<TD><SELECT name="selCity" id="selCity" onChange="myfun1( )" class="form-control" >  
+									  <OPTION>--{{ $article->conname }}--</OPTION>  
+									   </SELECT></TD>  
+								  </TR>  
+								   <TR>  
+									<TD><DIV align="center">客户</DIV></TD>  
+									<TD><SELECT name="selCity2" id="selCity2" onChange="myfun2( )" class="form-control" >  
+									  <OPTION>--{{ $article->clientname }}--</OPTION>  
+									   </SELECT></TD>  
+								  </TR>  
+								</TABLE>  
+						
+						
+						
+						
+						
+						
+						
 						
 						<label > 客户帐号 :{{ $article->UserId }}
 						
@@ -36,7 +68,9 @@
 						</label> 
 						<label > 消息发送方式: 
 						<input type="checkbox" name="one"  >
-						<label >手机短信</label> <input type="checkbox" name="two"  > <label >app</label>
+						<label >手机短信</label>
+						<input type="checkbox" name="two"  > <label >app</label>
+						<input type="checkbox" name="three"  > <label >威信</label>
 						</label> 
 						
 						
