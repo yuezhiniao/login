@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tabappuser extends Model
 {
-    protected $primaryKey = 'UserId';
+    // protected $primaryKey = 'UserId';
 }

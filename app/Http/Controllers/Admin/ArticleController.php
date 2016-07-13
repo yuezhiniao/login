@@ -29,19 +29,20 @@ class ArticleController extends Controller
        
     }
     
-    public function edit($UserId)
+    public function edit($id)
     {
-		$x=$UserId;
-        return view('admin/article/edit')->withArticle(Tabappuser::where('UserId',$x)->first());
+		$x=$id;
+        return view('admin/article/edit')->withArticle(Tabappuser::where('id',$x)->first());
     }
 
     public function store(Request $request) // Laravel 的依赖注入系统会自动初始化我们需要的 Request 类
     {
         // 数据验证
-        // $this->validate($request, [
+         $this->validate($request, [
             // 'title' => 'required|unique:tabappuser|max:255', // 必填、在 articles 表中唯一、最大长度 255
-            // 'body' => 'required', // 必填
-        // ]);
+             'password' => 'required|min:6|confirmed', // 必填
+			 
+         ]);
 
         // 通过 Article Model 插入一条数据进 articles 表
         $article = new Tabappuser; // 初始化 Article 对象
@@ -56,7 +57,10 @@ class ArticleController extends Controller
 		$article->one = $request->get('one'); // 同上
 		$article->two = $request->get('two'); // 同上
 		$article->three = $request->get('three'); // 同上
-		$article->memo = $request->get('memo'); // 同上
+		$article->weixinid = $request->get('weixinid');
+		$article->weixinname = $request->get('weixinname');
+		
+		
 		
         //$article->user_id = $request->user()->id; // 获取当前 Auth 系统中注册的用户，并将其 id 赋给 article 的 user_id 属性
         
@@ -69,13 +73,13 @@ class ArticleController extends Controller
         }
     }
 	
-	public function update(Request $request, $UserId)
+	public function update(Request $request, $id)
     {
         // $this->validate($request, [
             // 'title' => 'required|unique:articles,title,'.$id.'|max:255',
             // 'body' => 'required', 
         // ]);
-        $article = Tabappuser::find($UserId);
+        $article = Tabappuser::find($id);
 		$article->clientname = $request->get('selCity2');
 		$article->conname = $request->get('selCity');
 		$article->repname = $request->get('selProvince');
@@ -86,7 +90,10 @@ class ArticleController extends Controller
 		$article->one = $request->get('one');
 		$article->two = $request->get('two');
 		$article->three = $request->get('three');
-		$article->memo = $request->get('memo');
+		$article->weixinid = $request->get('weixinid');
+		$article->weixinname = $request->get('weixinname');
+		
+		
         if ($article->save()) {
             return redirect('admin/article');
         } else {
@@ -115,9 +122,9 @@ class ArticleController extends Controller
     }
 	*/
 
-    public function destroy($UserId)
+    public function destroy($id)
     {
-        Tabappuser::where('Userid',$UserId)->delete();
+        Tabappuser::where('id',$id)->delete();
         return redirect()->back()->withInput()->withErrors('删除成功！');
     }
 }

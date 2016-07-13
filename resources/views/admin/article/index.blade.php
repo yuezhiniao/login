@@ -14,7 +14,44 @@
                     @endif
 
                     <a href="{{ url('admin/article/create') }}" class="btn btn-lg btn-primary">新增</a>
-
+					<hr>
+					<TABLE  border="1" > 
+					 <TR >  
+									<TD align="center">客户帐号 </TD> 
+									<TD align="center">客户名称 </TD> 
+									<TD align="center">连接 </TD> 
+									<TD align="center">委托方 </TD> 
+									<TD align="center">客户 </TD> 
+									<TD align="center"> </TD> 
+									<TD align="center"> </TD> 
+									 </TR>  
+					 @foreach ($articles as $article)
+					 
+								  
+								  <TR >  
+									
+									<TD>{{ $article->UserId }} </TD>  
+									 
+									<TD>{{ $article->UserName }} </TD> 
+									<TD>{{ $article->repname }} </TD> 
+									<TD>{{ $article->conname }} </TD> 
+									<TD>{{ $article->clientname }} </TD> 
+									<TD><a href="{{ url('admin/article/'.$article->id.'/edit') }}"  >编辑</a></TD>
+									<TD> <form action="{{ url('admin/article/'.$article->id) }}" method="POST" style="display: inline;">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button type="submit" >删除</button>
+                        </form>
+						</TD>
+									 </TR> 
+									
+								 
+					
+					
+					@endforeach
+					</table>
+					
+                    <!--
                     @foreach ($articles as $article)
                         <hr>
                         <div class="article">
@@ -32,7 +69,7 @@
                             <button type="submit" class="btn btn-danger">删除</button>
                         </form>
                     @endforeach
-
+					-->
                 </div>
             </div>
         </div>
