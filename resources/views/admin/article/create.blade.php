@@ -13,8 +13,17 @@
                             <strong>新增失败</strong> 输入不符合要求<br><br>
                             {!! implode('<br>', $errors->all()) !!}
                         </div>
-                    @endif    
-					<script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+                    @endif 
+							
+					 <script type="text/javascript" src="{{ URL::asset('js/jquer.js') }}"></script>
+					 
+					 
+					
+					
+					
+					
+					
+					
 					      <form name="myform" id="myform" action="{{ url('admin/article') }}" method="POST">
                         {!! csrf_field() !!}
  
@@ -26,9 +35,14 @@
 									<TD align="center">连接 </TD>  
 									<TD><SELECT name="selProvince" id="selProvince" onChange="changeCity( )"  class="form-control" >  
 									  <OPTION>--请选择连接--</OPTION>  
-									  <OPTION>重庆捷江</OPTION>  
+									  <OPTION>重庆捷江医药有限公司</OPTION>  
 									  <OPTION>航空开发公司</OPTION>  
-									  <OPTION>万昌医药</OPTION>
+									  <OPTION>万昌医药有限公司</OPTION>
+									  <OPTION>禹杭医药有限公司</OPTION>
+									  <OPTION>浙江九欣医药有限公司</OPTION>
+									  <OPTION>合肥亿帆生物医药有限公司</OPTION>
+									  <OPTION>内蒙古猛光,兴飞医药有限公司</OPTION>
+									  
 									</SELECT></TD>  
 								  </TR>  
 								  <TR>  
